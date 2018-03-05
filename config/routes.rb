@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resource :books
+  resources :books
 
   root 'welcome#index'
 
