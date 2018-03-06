@@ -10,6 +10,18 @@
 
   <body>
     <a href='/'><h1 class='title'>Cabana Books</h1></a>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+          <%= link_to 'Home', {controller: 'welcome'}, class: 'navbar-link' %>
+          </li>
+          <li class="navbar-item">
+          <%= link_to 'Books', {controller: 'books'}, class: 'navbar-link' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="container">
       <%= yield %>
     </div>

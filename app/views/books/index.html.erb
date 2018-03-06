@@ -1,23 +1,37 @@
-<h5>Book Listing</h4>
-<hr/>
 <div class="row">
+  <%= form_with scope: :book, url: books_path, method: :get, local: true do |form| %>
+    <div class="row">
+      <div class="twelve columns">
+        <br>
+        <%= form.label :search %>
+        <%= form.text_field :search, class: 'u-full-width' %>
+        <%= form.submit 'Search Books', class: 'button-primary f-right' %>
+      </div>
+    </div>
+    <hr/>
+  <% end %>
+  <% if @books %>
+  <%= paginate @books %>
   <table class="u-full-width">
     <thead>
       <tr>
+        <th width="20%">Image</th>
         <th width="20%">Title</th>
-        <th width="70%">Summary</th>
-        <th></th>
+        <th width="50%">Summary</th>
       </tr>
     </thead>
+
     <tbody>
       <% @books.each do |book| %>
       <tr>
-        <td><%= book.title %></td>
-        <td><%= book.summary %></td>
-        <td><%= link_to 'Show', book_path(book) %></td>
+        <td><img src="<%= book.volumeInfo.imageLinks.smallThumbnail%>"></td>
+        <td><%= book.volumeInfo.title %></td>
+        <td><%= book.volumeInfo.respond_to?(:description) ? book.volumeInfo.description : 'No Description' %></td>
+        <td><%= link_to 'view', book.volumeInfo.infoLink, class: 'button' %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <% end %>
   <hr/>
 </div>

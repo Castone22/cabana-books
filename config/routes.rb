@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :books
+  resources :books, only: [:index, :show] do
+    get :next_page, on: :collection
+    get :previous_page, on: :collection
+  end
 
   root 'welcome#index'
 

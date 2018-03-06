@@ -1,24 +1,19 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    if params&.dig('book','search')
+      @books = find_books_by_name params['book']['search'], page: params['page']
+    end
   end
 
   def show
-    @book = Book.find(params[:id])  
-  end
-
-  def new
-  end
-
-  def create
-    @book = Book.new(book_params)
-
-    @book.save
-    redirect_to @book
+    @book = Book.find(params[:id])
   end
 
   private
-    def book_params
-      params.require(:book).permit(:title, :summary)
+    def find_books_by_name(name, page:)
+      params = {q: name, country: 'US'}
+      params[:startIndex] = page.to_i*10 if page
+      Book.find(:all, params: params)
     end
+
 end
