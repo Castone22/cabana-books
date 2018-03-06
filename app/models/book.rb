@@ -12,7 +12,7 @@ class Book < ApplicationResource
           parser.resource_class  = self
           parser.original_params = original_params
         end.collect { |record| instantiate_record(record, prefix_options) }
-        result.define_singleton_method(:total_pages){collection['totalItems'].to_i/10}
+        result.define_singleton_method(:total_pages){50}
         result.define_singleton_method(:current_page){original_params.fetch(:startIndex, 10).to_i/10}
         result.define_singleton_method(:limit_value){10}
         result
