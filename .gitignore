@@ -1,6 +1,8 @@
 .idea/
 *.iml
 
+config/secrets.yml
+
 *.rbc
 capybara-*.html
 .rspec
