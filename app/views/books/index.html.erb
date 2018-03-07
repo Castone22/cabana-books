@@ -1,40 +1,41 @@
 <div class="row">
   <%= form_with scope: :book, url: books_path, method: :get, local: true do |form| %>
     <div class="row">
-      <div class="twelve columns">
+      <div class="twelve columns" id="search_section">
         <br>
         <%= form.label :search %>
-        <%= form.text_field :search, class: 'u-full-width' %>
-        <%= form.submit 'Search Books', class: 'button-primary f-right' %>
+        <%= form.text_field :search, id: 'book_search', class: 'u-full-width' %>
+        <%= form.submit 'Search Books', id: 'book_search_submit', class: 'button-primary f-right' %>
         <img src="https://books.google.com/googlebooks/images/poweredby.png" border="0" width="62" height="30" align="absbottom" style="position: relative; top: 6px; margin:0; border: 0; padding: 0; padding-left: 8px">
       </div>
     </div>
     <hr/>
   <% end %>
   <% if @books %>
-  <%= paginate @books %>
-  <table class="u-full-width">
-    <thead>
-      <tr>
-        <th width="20%">Image</th>
-        <th width="20%">Title</th>
-        <th width="50%">Summary</th>
-      </tr>
-    </thead>
+    <%= paginate @books %>
+    <table class="u-full-width" id="results_section">
+      <thead>
+        <tr id="results_heading">
+          <th width="20%">Image</th>
+          <th width="20%">Title</th>
+          <th width="50%">Summary</th>
+          <th></th>
+        </tr>
+      </thead>
 
-    <tbody>
-    <% unless @books.to_a.nil? %>
-      <% @books.each do |book| %>
-      <tr>
-        <td><img src="<%= book.volumeInfo.imageLinks.smallThumbnail%>"></td>
-        <td><%= book.volumeInfo.title %></td>
-        <td><%= book.volumeInfo.respond_to?(:description) ? book.volumeInfo.description : 'No Description' %></td>
-        <td><%= link_to 'view', book.volumeInfo.infoLink, class: 'button' %></td>
-      </tr>
+      <tbody>
+      <% unless @books.to_a.nil? %>
+        <% @books.each_with_index do |book, i| %>
+        <tr id="result_<%=i%>">
+          <td><img src="<%= book.volumeInfo.imageLinks.smallThumbnail%>"></td>
+          <td><%= book.volumeInfo.title %></td>
+          <td><%= book.volumeInfo.respond_to?(:description) ? book.volumeInfo.description : 'No Description' %></td>
+          <td><%= link_to 'view', book.volumeInfo.infoLink, class: 'button' %></td>
+        </tr>
+        <% end %>
       <% end %>
-    <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   <% end %>
   <hr/>
 </div>
