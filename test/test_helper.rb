@@ -6,5 +6,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  # Set tests to run in a random order so that sequential tests cannot be created.
+  self.test_order = :random
+
   # Add more helper methods to be used by all tests here...
 end
