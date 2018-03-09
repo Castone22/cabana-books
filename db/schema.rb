@@ -10,18 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305152218) do
+ActiveRecord::Schema.define(version: 20180309212149) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "summary"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.text "summary"
+  create_table "local_books", force: :cascade do |t|
+    t.string "google_id"
+    t.boolean "read"
+    t.integer "page_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
