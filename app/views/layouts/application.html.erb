@@ -3,16 +3,17 @@
   <head>
     <title>CabanaBooks</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
-    <a href='/'><h1 class='title'>Cabana Books</h1></a>
-    <nav class="navbar">
-      <div class="container">
-        <ul class="navbar-list">
+
+    <nav class="navbar-fixed">
+      <div class="nav-wrapper container">
+        <a class="brand-logo", href="/" id="logo-container">Cabana</a>
+        <ul class="navbar-list right">
           <li class="navbar-item">
           <%= link_to 'Home', {controller: 'welcome'}, class: 'navbar-link' %>
           </li>

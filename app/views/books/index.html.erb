@@ -3,13 +3,14 @@
     <div class="row">
       <div class="twelve columns" id="search_section">
         <br>
-        <%= form.label :search %>
-        <%= form.text_field :search, id: 'book_search', class: 'u-full-width' %>
-        <%= form.submit 'Search Books', id: 'book_search_submit', class: 'button-primary f-right' %>
+        <div class="input-field col s12">
+          <%= form.label :search, class: 'right' %>
+          <%= form.text_field :search, id: 'book_search' %>
+        </div>
+        <%= form.submit 'Search Books', id: 'book_search_submit', class: 'btn waves-effect waves-light right' %>
         <img src="https://books.google.com/googlebooks/images/poweredby.png" border="0" width="62" height="30" align="absbottom" style="position: relative; top: 6px; margin:0; border: 0; padding: 0; padding-left: 8px">
       </div>
     </div>
-    <hr/>
   <% end %>
   <% if @books %>
     <%= paginate @books %>
@@ -30,12 +31,11 @@
             <td><img src="<%= book.sfetch(:volumeInfo)&.sfetch(:imageLinks)&.sfetch(:smallThumbnail)%>"></td>
             <td><%= book.sfetch(:volumeInfo)&.sfetch(:title) %></td>
             <td><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></td>
-            <td><%= link_to 'view', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'button' %></td>
+            <td><%= link_to 'view', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %></td>
           </tr>
         <% end %>
       <% end %>
       </tbody>
     </table>
   <% end %>
-  <hr/>
 </div>

@@ -8,7 +8,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
 gem 'activeresource'
-gem 'skeleton-rails', '~> 1.2'
+gem 'materialize-sass'
 gem 'kaminari'
 gem 'autoprefixer-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

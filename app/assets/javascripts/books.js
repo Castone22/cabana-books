@@ -7,6 +7,16 @@ $.validator.addMethod('requiredNotBlank', function(value, element){
 
 function validateBookSearch(){
     $('#book_search_form').validate({
+        errorElement : 'div',
+        errorClass: 'error right',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        },
         debug: false,
         rules: {
             "book[search]": {requiredNotBlank: true}

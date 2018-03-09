@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery.validate
+//= require materialize
 //= require_tree .
