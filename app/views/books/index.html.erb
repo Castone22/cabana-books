@@ -26,12 +26,14 @@
       <tbody>
       <% unless @books.to_a.nil? %>
         <% @books.each_with_index do |book, i| %>
-        <tr id="result_<%=i%>">
-          <td><img src="<%= book.volumeInfo.imageLinks.smallThumbnail%>"></td>
-          <td><%= book.volumeInfo.title %></td>
-          <td><%= book.volumeInfo.respond_to?(:description) ? book.volumeInfo.description : 'No Description' %></td>
-          <td><%= link_to 'view', book.volumeInfo.infoLink, class: 'button' %></td>
-        </tr>
+          <tr id="result_<%=i%>">
+            <td><% if book.volumeInfo.respond_to? :imageLinks%>
+              <img src="<%= book.volumeInfo.imageLinks.smallThumbnail%>"></td>
+                <% end %>
+            <td><%= book.volumeInfo.title %></td>
+            <td><%= book.volumeInfo.respond_to?(:description) ? book.volumeInfo.description : 'No Description' %></td>
+            <td><%= link_to 'view', book.volumeInfo.infoLink, class: 'button' %></td>
+          </tr>
         <% end %>
       <% end %>
       </tbody>
