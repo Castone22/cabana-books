@@ -14,28 +14,22 @@
   <% end %>
   <% if @books %>
     <%= paginate @books %>
-    <table class="u-full-width" id="results_section">
-      <thead>
-        <tr id="results_heading">
-          <th width="20%">Image</th>
-          <th width="20%">Title</th>
-          <th width="50%">Summary</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
+    <div class="row" id="results_section">
       <% unless @books.to_a.nil? %>
         <% @books.each_with_index do |book, i| %>
-          <tr id="result_<%=i%>">
-            <td><img src="<%= book.sfetch(:volumeInfo)&.sfetch(:imageLinks)&.sfetch(:smallThumbnail)%>"></td>
-            <td><%= book.sfetch(:volumeInfo)&.sfetch(:title) %></td>
-            <td><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></td>
-            <td><%= link_to 'view', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %></td>
-          </tr>
+          <div class="card horizontal" id="result_<%=i%>">
+            <div class="card-image valign-wrapper">
+              <img src="<%= book.sfetch(:volumeInfo)&.sfetch(:imageLinks)&.sfetch(:smallThumbnail)%>">
+            </div>
+            <div class="card-stacked">
+              <div class="card-title"><%= book.sfetch(:volumeInfo)&.sfetch(:title) %></div>
+              <div class="card-content"><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></div>
+              <div class="card-action"><%= link_to 'View on Google Books', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %></div>
+            </div>
+          </div>
         <% end %>
       <% end %>
-      </tbody>
-    </table>
+      </div>
+    </div>
   <% end %>
 </div>

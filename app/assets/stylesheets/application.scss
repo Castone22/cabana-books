@@ -27,3 +27,14 @@ $secondary-color: color("grey", "darken-2") !default;
   color:#FF4081;
 }
 
+.card.horizontal .card-stacked .card-title {
+  padding-left: 24px
+}
+
+.card.horizontal .card-image {
+  width: 25%
+}
+
+.card.horizontal .card-image img {
+  width: 100%
+}
