@@ -39,3 +39,7 @@ $success-color: color("grey", "darken-2") !default;
 .card.horizontal .card-image img {
   width: 100%
 }
+
+div.force-height{
+  min-height: 68vh;
+}
