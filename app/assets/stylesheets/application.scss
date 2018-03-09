@@ -15,8 +15,9 @@
  */
 
 @import "materialize/components/color";
-$primary-color: color("red", "darken-2") !default;
-$secondary-color: color("grey", "darken-2") !default;
+$primary-color: color("blue", "darken-4") !default;
+$secondary-color: color("grey", "darken-3") !default;
+$success-color: color("grey", "darken-2") !default;
 @import 'materialize';
 
 .input-field div.error{
