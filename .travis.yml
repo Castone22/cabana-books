@@ -1,4 +1,19 @@
 language: ruby
 rvm:
-  - 2.4
-  - jruby
+- 2.4
+- jruby
+env:
+- DB=sqlite
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAI2PVM6XHPTM7JY5Q
+  region: us-east-2
+  app: cabana-books
+  env: cabana-books-environment
+  bucket_name: elasticbeanstalk-us-east-2-726073200875
+  secret_access_key:
+    secure: BsXQJLg4mwrqLqfjoX9Kum1fOA2zzyM5Qsy6rjaE+gTTBxHkusXETjJ/vHAjX1B+DdfXQA7nyHfLucoylReaab3hVjzEcjz8ViI25RC8oWZuxzjcAZpvLJzTx86K+7W68ZO87r836kgs/HNdt3oZL+Kzx0R5o3UCf3OXW3ZhbJsYMm1zd2XY99/XlDhU9iQzTh3HQVc1QEZuOAz72WBOGK4I6bGErslINW2Lmr6AHQMutAGvttnQ4GiTUeDJdmT+coqn9qsQAoavIxFiCVlA4WOJSJAMj3XulGk9qXtrm+TCjULO7RD+gEV4QjJBykRAUVld7JiqmT2xAQcA3nWK/feET7SnQ4JZ2tY1q3IF5UuOZugeD8WLbUdy4mQI3yVa2rOcRJQLJO+lEDAQ3ieNXejSWld+5kHGYAcPlh7t3db1o+bBOhj7HAs2F4AANIDZLMNgMjcokNor4w9+ZoMB1XQorQMfmhhXKAhArwn2+/1IFllQdRzZG077PYJ+tdkJYU+fp/D4WvAfsC2Rym3I/nbJjkdyyJyltWMxxuX2W20aE5NGe3MZmNYP9Qyc6oNRRdm4vuEo/6AKmkryERMgDZb24i3zHZZidOkJN41/BpdCJgSklDERGxqOUQEJrQ6OQDRntniNm6M6LjD0HFs+JmbvNhS2qWFfHH7GV9Wr2Bc=
+
+script:
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
