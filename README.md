@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Castone22/cabana-books.svg?branch=master)](https://travis-ci.org/Castone22/cabana-books)
+
 # README
 
 Cabana Books is a small rails application that I'm
