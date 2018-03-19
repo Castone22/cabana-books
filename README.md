@@ -2,6 +2,8 @@
 
 # README
 
+Part of [https://github.com/Castone22/Cabana](Cabana)
+
 Cabana Books is a small rails application that I'm
 using as a playground to experiment with the framework
 as a whole.
