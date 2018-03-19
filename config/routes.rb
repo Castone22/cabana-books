@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   get 'about/index'
   get 'welcome/index'
 
-  resources :books, only: [:index, :show] do
-    get :next_page, on: :collection
-    get :previous_page, on: :collection
+  resources :books, only: :index do
+    get :save_to_shelf, on: :collection
+
   end
 
   root 'welcome#index'

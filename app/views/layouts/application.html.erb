@@ -11,13 +11,16 @@
     <header class="navbar-fixed">
       <nav>
         <div class="nav-wrapper container">
-          <a class="brand-logo", href="/" id="logo-container">Cabana</a>
+          <a class="brand-logo" href="/" id="logo-container">Cabana</a>
           <ul class="navbar-list right">
             <li class="navbar-item">
               <%= link_to 'Home', {controller: 'welcome'}, class: 'navbar-link' %>
             </li>
             <li class="navbar-item">
               <%= link_to 'Books', {controller: 'books'}, class: 'navbar-link' %>
+            </li>
+            <li class="navbar-item">
+              <a href="<%=CabanaBooks::Application.app_config[:shelf_url] %>">Shelf</a>
             </li>
             <li class="navbar-item">
               <%= link_to 'About', {controller: 'about'}, class: 'navbar-link' %>

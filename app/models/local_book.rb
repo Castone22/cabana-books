@@ -1,2 +1,0 @@
-class LocalBook < ApplicationRecord
-end

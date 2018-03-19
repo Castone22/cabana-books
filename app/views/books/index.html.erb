@@ -19,12 +19,15 @@
         <% @books.each_with_index do |book, i| %>
           <div class="card horizontal" id="result_<%=i%>">
             <div class="card-image valign-wrapper">
-              <img src="<%= book.sfetch(:volumeInfo)&.sfetch(:imageLinks)&.sfetch(:smallThumbnail)%>">
+              <img src="http://books.google.com/books/content?id=<%=book.sfetch(:id)%>&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api">
             </div>
             <div class="card-stacked">
               <div class="card-title"><%= book.sfetch(:volumeInfo)&.sfetch(:title) %></div>
               <div class="card-content"><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></div>
-              <div class="card-action"><%= link_to 'View on Google Books', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %></div>
+              <div class="card-action">
+                <%= link_to 'View on Google Books', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %>
+                <%= link_to 'Shelf It!', "#{save_to_shelf_books_path}?book=#{book.sfetch(:id)}", {class: 'waves-effect waves-light btn'} %>
+              </div>
             </div>
           </div>
         <% end %>
