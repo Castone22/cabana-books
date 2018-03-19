@@ -23,7 +23,14 @@
             </div>
             <div class="card-stacked">
               <div class="card-title"><%= book.sfetch(:volumeInfo)&.sfetch(:title) %></div>
-              <div class="card-content"><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></div>
+              <div class="card-content">
+                <ul class="collapsible" data-collapsible="expandable">
+                  <li>
+                    <div class="collapsible-header">Description</div>
+                    <div class="collapsible-body"><span><%= book.sfetch(:volumeInfo)&.sfetch(:description) || 'No Description' %></span></div>
+                  </li>
+                </ul>
+              </div>
               <div class="card-action">
                 <%= link_to 'View on Google Books', book.sfetch(:volumeInfo)&.sfetch(:infoLink), class: 'waves-effect waves-light btn' %>
                 <%= link_to 'Shelf It!', "#{save_to_shelf_books_path}?book=#{book.sfetch(:id)}", {class: 'waves-effect waves-light btn'} %>
