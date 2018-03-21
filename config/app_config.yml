@@ -1,8 +1,10 @@
 production:
-  :shelf_url: 'http://localhost:4200'
-
+  :shelf_url: 'shelf.cabana.lzridgecodes.net'
+  :shelf_api_url: 'shelf-api.lzridgecodes.net:3000'
 test:
   :shelf_url: 'http://localhost:4200'
+  :shelf_api_url: 'http://localhost:3000'
 
 development:
   :shelf_url: 'http://localhost:4200'
+  :shelf_api_url: 'http://localhost:3000'

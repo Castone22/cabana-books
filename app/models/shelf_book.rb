@@ -1,5 +1,5 @@
 class ShelfBook < ApplicationResource
-  self.site = 'http://localhost:3000'
+  self.site = Rails.application.app_config[:shelf_api_url]
   self.collection_name = 'books'
 
 end
